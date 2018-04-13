@@ -17,9 +17,6 @@ namespace JS_Arena_Fighter
         private bool Alive;
         private string latestOpponent = "nobody";
 
-        private string[] listOfNames = { "Hurog, the orcish sellsword", "Glorfinmad, the elven barbarian", "Thonir Ironhand, the dwarven berserker", "K1llstealer420, the griefer", "Stacy, the clueless tourist", "fifty squirrels in a horse costume", "Greg", "your evil twin", "Dirk Phoenix, the brooding anti-hero", "five thousand lines of buggy code", "Mordecai Nightstalker, the day-walking vampire", "your mentally unstable ex" };
-        private string[] ratingsArray = { "abysmal", "pitiful", "weak", "average", "strong", "powerful", "mighty", "incredible", "unknown" };
-
         Random soRandom = new Random();
 
         public Fighter(string fName, int fStr, int fDex, int fInt)
@@ -35,7 +32,7 @@ namespace JS_Arena_Fighter
 
         public Fighter()
         {
-            Name = listOfNames[soRandom.Next(listOfNames.Length)];
+            Name = Lines.listOfNames[soRandom.Next(Lines.listOfNames.Length)];
             Str = soRandom.Next(3, 10);
             Dex = soRandom.Next(3, 10);
             Int = soRandom.Next(3, 10);
@@ -68,7 +65,7 @@ namespace JS_Arena_Fighter
             string Rating = "unknown";
             int statAvg = (Str + Dex + Int) / 3;
 
-            Rating = ratingsArray[statAvg - 3];
+            Rating = Lines.ratingsArray[statAvg - 3];
 
             return Rating;
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,9 @@ namespace JS_Arena_Fighter
             Console.WriteLine($"You are {playerName}, a beginner fighter. What are your abilities, {playerName}?");
             Console.WriteLine();
             Console.WriteLine("A warrior is defined by their strength, dexterity, and intelligence.");
+            Console.WriteLine();
             Console.WriteLine("Strength will make your blows deadlier and more sure. \nDexterity will allow you to dodge an opponent's attacks, and reduce the severity of their hits. \nIntelligence will aid your fighting ability overall.");
+            Console.WriteLine();
             Console.WriteLine("You have eighteen points to assign to your abilities. While you may spend less, \ndo not attempt to assign more, or you will be cast out of the arena in disgrace.");
 
 
@@ -53,8 +56,10 @@ namespace JS_Arena_Fighter
 
             Fighter player = new Fighter(playerName, playerStr, playerDex, playerInt);
 
-            Console.WriteLine("Your adventure at the arena may begin.");
-            Console.WriteLine();
+            Console.WriteLine("Your destiny awaits.");
+            Console.ReadKey();
+
+            Console.Clear();
 
             //Now we can begin fighting! Yeah!
             Console.WriteLine($"{player.GetName()} enters the arena!");
@@ -72,7 +77,7 @@ namespace JS_Arena_Fighter
                 {
                     //Create opponent
                     Fighter opponent = new Fighter();
-                    Console.WriteLine($"You come face to face with {opponent.GetName()}! They look {opponent.GetRating()} and are worth {opponent.GetScoreRating()} points!");
+                    Console.WriteLine($"You come face to face with {opponent.GetName()}! They look {opponent.GetRating()}!");
                     player.SetLatestOpponent(opponent.GetName());
 
                     //Create battle
