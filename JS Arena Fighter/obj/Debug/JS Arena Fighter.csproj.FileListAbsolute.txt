@@ -1,0 +1,14 @@
+C:\Users\Lexicon\source\repos\JS Arena Fighter\JS Arena Fighter\bin\Debug\JS Arena Fighter.exe.config
+C:\Users\Lexicon\source\repos\JS Arena Fighter\JS Arena Fighter\bin\Debug\JS Arena Fighter.exe
+C:\Users\Lexicon\source\repos\JS Arena Fighter\JS Arena Fighter\bin\Debug\JS Arena Fighter.pdb
+C:\Users\Lexicon\source\repos\JS Arena Fighter\JS Arena Fighter\obj\Debug\JS Arena Fighter.csprojResolveAssemblyReference.cache
+C:\Users\Lexicon\source\repos\JS Arena Fighter\JS Arena Fighter\obj\Debug\JS Arena Fighter.csproj.CoreCompileInputs.cache
+C:\Users\Lexicon\source\repos\JS Arena Fighter\JS Arena Fighter\obj\Debug\JS Arena Fighter.exe
+C:\Users\Lexicon\source\repos\JS Arena Fighter\JS Arena Fighter\obj\Debug\JS Arena Fighter.pdb
+C:\Users\Lexicon\source\repos\JS Arena Fighter\JS-Arena-Fighter\JS Arena Fighter\bin\Debug\JS Arena Fighter.exe.config
+C:\Users\Lexicon\source\repos\JS Arena Fighter\JS-Arena-Fighter\JS Arena Fighter\bin\Debug\JS Arena Fighter.exe
+C:\Users\Lexicon\source\repos\JS Arena Fighter\JS-Arena-Fighter\JS Arena Fighter\bin\Debug\JS Arena Fighter.pdb
+C:\Users\Lexicon\source\repos\JS Arena Fighter\JS-Arena-Fighter\JS Arena Fighter\obj\Debug\JS Arena Fighter.csprojResolveAssemblyReference.cache
+C:\Users\Lexicon\source\repos\JS Arena Fighter\JS-Arena-Fighter\JS Arena Fighter\obj\Debug\JS Arena Fighter.csproj.CoreCompileInputs.cache
+C:\Users\Lexicon\source\repos\JS Arena Fighter\JS-Arena-Fighter\JS Arena Fighter\obj\Debug\JS Arena Fighter.exe
+C:\Users\Lexicon\source\repos\JS Arena Fighter\JS-Arena-Fighter\JS Arena Fighter\obj\Debug\JS Arena Fighter.pdb
