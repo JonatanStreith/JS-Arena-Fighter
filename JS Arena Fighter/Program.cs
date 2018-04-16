@@ -20,7 +20,6 @@ namespace JS_Arena_Fighter
 
             string wantFight;
 
-            ConsoleKeyInfo keyPressed;
 
             //This is where the main program happens.
 
@@ -46,8 +45,8 @@ namespace JS_Arena_Fighter
                 legit = Int32.TryParse(Console.ReadLine(), out playerInt);
 
                 Console.WriteLine($"You have stated that you have a strength of {playerStr}, dexterity of {playerDex} and intelligence of {playerInt}. Is this correct? Y/N [N]");
-                keyPressed = Console.ReadKey(true);
-            } while (keyPressed.Key.ToString() != "Y");
+
+            } while (Console.ReadKey(true).Key.ToString() != "Y");          //If player doesn't say yes, start over.
 
             if (playerStr + playerDex + playerInt > 18)
             {
@@ -58,12 +57,9 @@ namespace JS_Arena_Fighter
 
             Fighter player = new Fighter(playerName, playerStr, playerDex, playerInt);
 
-            Console.WriteLine($"You arm yourself with a +{player.GetWeaponStrength()} {player.GetWeaponName()} and don a +{player.GetArmorStrength()} {player.GetArmorName()}.");
-
-
-            Console.WriteLine("Your destiny awaits.");
+            Console.WriteLine();
+            Console.WriteLine($"You arm yourself with a +{player.GetWeaponStrength()} {player.GetWeaponName()} and don a +{player.GetArmorStrength()} {player.GetArmorName()}. Your destiny awaits.");
             Console.ReadKey();
-
             Console.Clear();
 
             //Now we can begin fighting! Yeah!
@@ -80,9 +76,8 @@ namespace JS_Arena_Fighter
                 Console.WriteLine($"You currently wield a +{player.GetWeaponStrength()} {player.GetWeaponName()} and wear a +{player.GetArmorStrength()} {player.GetArmorName()}.");
 
                 Console.WriteLine("Do you want to challenge an opponent? Y/N [N]");
-                keyPressed = Console.ReadKey(true);
 
-                wantFight = keyPressed.Key.ToString();
+                wantFight = Console.ReadKey(true).Key.ToString();
 
                 if (wantFight == "Y")
                 {

@@ -38,10 +38,10 @@ namespace JS_Arena_Fighter
             Score = 0;
             Alive = true;
 
-            weaponName = Lines.weaponType[soRandom.Next(Lines.weaponType.Length)];
+            weaponName = String.Concat(Lines.weaponMaterial[soRandom.Next(Lines.weaponMaterial.Length)], Lines.weaponType[soRandom.Next(Lines.weaponType.Length)]);
             weaponStrength = 0;
 
-            armorName = Lines.armorType[soRandom.Next(Lines.armorType.Length)];
+            armorName = String.Concat(Lines.armorMaterial[soRandom.Next(Lines.armorMaterial.Length)], Lines.armorType[soRandom.Next(Lines.armorType.Length)]);
             armorStrength = 0;
 
         }
@@ -55,10 +55,10 @@ namespace JS_Arena_Fighter
 
             maxPower = (((Str + Dex + Int) / 3)-2);
 
-            weaponName = Lines.weaponType[soRandom.Next(Lines.weaponType.Length)];
+            weaponName = String.Concat(Lines.weaponMaterial[soRandom.Next(Lines.weaponMaterial.Length)], Lines.weaponType[soRandom.Next(Lines.weaponType.Length)]);
             weaponStrength = soRandom.Next(maxPower);
 
-            armorName = Lines.armorType[soRandom.Next(Lines.armorType.Length)];
+            armorName = String.Concat(Lines.armorMaterial[soRandom.Next(Lines.armorMaterial.Length)], Lines.armorType[soRandom.Next(Lines.armorType.Length)]);
             armorStrength = soRandom.Next(maxPower);
 
         }
