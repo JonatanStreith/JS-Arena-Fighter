@@ -15,7 +15,7 @@ namespace JS_Arena_Fighter
             int opponentHealth = 100;
             int playerRoll;
             int opponentRoll;
-            int whoHits;         //If positive, player hits; 2: if negative, opponent hits; 0: stalemate
+            int whoHits;         //If positive, player hits; if negative, opponent hits; 0: stalemate
             int damageDealt;
 
             Random battleDice = new Random();
@@ -24,10 +24,6 @@ namespace JS_Arena_Fighter
 
 
             Console.WriteLine($"The battle has begun! {opponent.GetName()} {Lines.battleOpeners[battleDice.Next(Lines.battleOpeners.Length)]}");
-            Console.ReadKey();
-
-            Console.Clear();
-
 
             while ((playerHealth > 0) && (opponentHealth > 0))
             {
@@ -63,7 +59,7 @@ namespace JS_Arena_Fighter
                     {
                         playerHealth -= damageDealt;
                     }
-                    Console.WriteLine($"They {Lines.attacks[battleDice.Next(Lines.attacks.Length)]} you for {damageDealt} points of damage!");
+                    Console.WriteLine($"They {Lines.attacks[battleDice.Next(Lines.attacks.Length)]} you! {Lines.GetDeadliness(damageDealt)}");
                 }
                 else
                 {

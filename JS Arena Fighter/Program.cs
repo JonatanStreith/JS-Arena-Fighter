@@ -85,6 +85,7 @@ namespace JS_Arena_Fighter
 
                     if (Console.ReadKey(true).Key.ToString() == "Y")
                     {
+                        Console.Clear();
                         player.SetLatestOpponent(opponent.GetName());
                         Battle newBattle = new Battle(player, opponent);        //Create battle
                     }
