@@ -24,6 +24,10 @@ namespace JS_Arena_Fighter
 
 
             Console.WriteLine($"The battle has begun! {opponent.GetName()} {Lines.battleOpeners[battleDice.Next(Lines.battleOpeners.Length)]}");
+            Console.ReadKey();
+
+            Console.Clear();
+
 
             while ((playerHealth > 0) && (opponentHealth > 0))
             {
@@ -49,7 +53,7 @@ namespace JS_Arena_Fighter
                     {
                         opponentHealth -= damageDealt;
                     }
-                    Console.WriteLine($"You {Lines.attacks[battleDice.Next(Lines.attacks.Length)]} your opponent for {damageDealt} points of damage!");
+                    Console.WriteLine($"You {Lines.attacks[battleDice.Next(Lines.attacks.Length)]} your opponent! {Lines.GetDeadliness(damageDealt)}");
                 }
                 else if (whoHits < 0)
                 {
@@ -73,7 +77,7 @@ namespace JS_Arena_Fighter
 
             if (playerHealth <= 0)
             {
-                Console.WriteLine($"You have been defeated. {Lines.defeated[battleDice.Next(Lines.defeated.Length)]}\n {opponent.GetName()} {Lines.opponentResponse[battleDice.Next(Lines.opponentResponse.Length)]}");
+                Console.WriteLine($"You have been defeated. {Lines.defeated[battleDice.Next(Lines.defeated.Length)]}\n{opponent.GetName()} {Lines.opponentResponse[battleDice.Next(Lines.opponentResponse.Length)]}");
                 player.Die();
             }
             else if (opponentHealth <= 0)

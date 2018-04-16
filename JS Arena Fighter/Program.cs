@@ -18,6 +18,8 @@ namespace JS_Arena_Fighter
             int playerInt = 0;
             bool legit;             //Tracks whether an input is legitimately parsable
 
+            string wantFight;
+
             ConsoleKeyInfo keyPressed;
 
             //This is where the main program happens.
@@ -73,18 +75,27 @@ namespace JS_Arena_Fighter
                 Console.WriteLine("Do you want to challenge an opponent? Y/N [N]");
                 keyPressed = Console.ReadKey(true);
 
-                if (keyPressed.Key.ToString() == "Y")
-                {
-                    //Create opponent
-                    Fighter opponent = new Fighter();
-                    Console.WriteLine($"You come face to face with {opponent.GetName()}! They look {opponent.GetRating()}!");
-                    player.SetLatestOpponent(opponent.GetName());
+                wantFight = keyPressed.Key.ToString();
 
-                    //Create battle
-                    Battle newBattle = new Battle(player, opponent);
+                if (wantFight == "Y")
+                {
+
+                    Fighter opponent = new Fighter();                       //Create opponent
+                    Console.WriteLine($"You come face to face with {opponent.GetName()}! They look {opponent.GetRating()}! Do you want to challenge them?");
+
+                    if (Console.ReadKey(true).Key.ToString() == "Y")
+                    {
+                        player.SetLatestOpponent(opponent.GetName());
+                        Battle newBattle = new Battle(player, opponent);        //Create battle
+                    }
+                    else
+                    {
+                        Console.WriteLine($"You back away with a hasty excuse. For your cowardice, you are docked three points.");
+                        player.AddScore(-3);
+                    }
                 }
 
-            } while ((keyPressed.Key.ToString() == "Y") && (player.IsAlive() == true));
+            } while ((wantFight == "Y") && (player.IsAlive() == true));
 
 
             if (player.IsAlive() == true)
@@ -95,7 +106,7 @@ namespace JS_Arena_Fighter
             {
                 Bury(player);
             }
-                Console.ReadLine();         //The end!
+            Console.ReadLine();         //The end!
         }
 
 
@@ -117,7 +128,7 @@ namespace JS_Arena_Fighter
 
             Console.WriteLine($"You achieved {player.SeeScore()} points, and slew {player.SeeVictories()} opponents, including {player.GetLatestOpponent()}. Your rating... is unimplemented for now.");
             Console.WriteLine("Thanks for playing!");
-            }
+        }
 
         public static void Bury(Fighter player)
         {
