@@ -16,6 +16,9 @@ namespace JS_Arena_Fighter
         private int Score;
         private bool Alive;
         private string latestOpponent = "nobody";
+        private string actionChoice;                //What the fighter chooses - attack or defend
+        private int diceRoll;                       //What they rolled last
+
 
         private string weaponName;
         private int weaponStrength;
@@ -24,9 +27,9 @@ namespace JS_Arena_Fighter
         private int armorStrength;
 
         private int maxPower;       //How powerful equipment they may have, at most
+        private int defenseBonus;    //You get a bonus to your attack if you defended last turn
 
 
-        Random soRandom = new Random();
 
         public Fighter(string fName, int fStr, int fDex, int fInt)
         {
@@ -38,50 +41,32 @@ namespace JS_Arena_Fighter
             Score = 0;
             Alive = true;
 
-            weaponName = String.Concat(Lines.weaponMaterial[soRandom.Next(Lines.weaponMaterial.Length)], Lines.weaponType[soRandom.Next(Lines.weaponType.Length)]);
+            weaponName = String.Concat(Lines.weaponMaterial[Lines.battleDice.Next(Lines.weaponMaterial.Length)], Lines.weaponType[Lines.battleDice.Next(Lines.weaponType.Length)]);
             weaponStrength = 0;
 
-            armorName = String.Concat(Lines.armorMaterial[soRandom.Next(Lines.armorMaterial.Length)], Lines.armorType[soRandom.Next(Lines.armorType.Length)]);
+            armorName = String.Concat(Lines.armorMaterial[Lines.battleDice.Next(Lines.armorMaterial.Length)], Lines.armorType[Lines.battleDice.Next(Lines.armorType.Length)]);
             armorStrength = 0;
 
         }
 
         public Fighter()
         {
-            Name = Lines.listOfNames[soRandom.Next(Lines.listOfNames.Length)];
-            Str = soRandom.Next(3, 10);
-            Dex = soRandom.Next(3, 10);
-            Int = soRandom.Next(3, 10);
+            Name = Lines.listOfNames[Lines.battleDice.Next(Lines.listOfNames.Length)];
+            Str = Lines.battleDice.Next(3, 10);
+            Dex = Lines.battleDice.Next(3, 10);
+            Int = Lines.battleDice.Next(3, 10);
 
-            maxPower = (((Str + Dex + Int) / 3)-2);
+            maxPower = (((Str + Dex + Int) / 3) - 2);
 
-            weaponName = String.Concat(Lines.weaponMaterial[soRandom.Next(Lines.weaponMaterial.Length)], Lines.weaponType[soRandom.Next(Lines.weaponType.Length)]);
-            weaponStrength = soRandom.Next(maxPower);
+            weaponName = String.Concat(Lines.weaponMaterial[Lines.battleDice.Next(Lines.weaponMaterial.Length)], Lines.weaponType[Lines.battleDice.Next(Lines.weaponType.Length)]);
+            weaponStrength = Lines.battleDice.Next(maxPower);
 
-            armorName = String.Concat(Lines.armorMaterial[soRandom.Next(Lines.armorMaterial.Length)], Lines.armorType[soRandom.Next(Lines.armorType.Length)]);
-            armorStrength = soRandom.Next(maxPower);
+            armorName = String.Concat(Lines.armorMaterial[Lines.battleDice.Next(Lines.armorMaterial.Length)], Lines.armorType[Lines.battleDice.Next(Lines.armorType.Length)]);
+            armorStrength = Lines.battleDice.Next(maxPower);
 
         }
 
-        public string GetName()
-        {
-            return Name;
-        }
 
-        public int GetStr()
-        {
-            return Str;
-        }
-
-        public int GetDex()
-        {
-            return Dex;
-        }
-
-        public int GetInt()
-        {
-            return Int;
-        }
 
         public string GetRating()
         {
@@ -94,103 +79,94 @@ namespace JS_Arena_Fighter
         }
 
 
+        //Bunch of very simple queries and actions
+
+        public string GetName()
+        { return Name; }
+
+        public int GetStr()
+        { return Str; }
+
+        public int GetDex()
+        { return Dex; }
+
+        public int GetInt()
+        { return Int; }
+
         public int GetScoreRating()
-        {
-            return (Str + Dex + Int) / 3;
-        }
+        { return (Str + Dex + Int) / 3; }
 
         public int GetOffense()
-        {
-            return Str + Int + weaponStrength;
-        }
+        { return Str + Int + weaponStrength; }
 
         public int GetDefense()
-        {
-            return Dex + Int + armorStrength;
-        }
-
-
+        { return Dex + Int + armorStrength; }
 
 
         public string GetWeaponName()
-        {
-            return weaponName;
-        }
+        { return weaponName; }
         public int GetWeaponStrength()
-        {
-            return weaponStrength;
-        }
+        { return weaponStrength; }
 
 
         public string GetArmorName()
-        {
-            return armorName;
-        }
+        { return armorName; }
         public int GetArmorStrength()
-        {
-            return armorStrength;
-        }
-
+        { return armorStrength; }
 
         public void SetWeaponName(string newName)
-        {
-            weaponName = newName;
-        }
+        { weaponName = newName; }
         public void SetWeaponStrength(int newStrength)
-        {
-            weaponStrength = newStrength;
-        }
+        { weaponStrength = newStrength; }
 
         public void SetArmorName(string newName)
-        {
-            armorName = newName;
-        }
+        { armorName = newName; }
         public void SetArmorStrength(int newStrength)
-        {
-            armorStrength = newStrength;
-        }
+        { armorStrength = newStrength; }
 
 
 
         public void AddVictory()        //Tallies another victory
-        {
-            Victories++;
-        }
+        { Victories++; }
 
         public int SeeVictories()       //Shows how many victories you've had
-        {
-            return Victories;
-        }
+        { return Victories; }
 
         public void AddScore(int newScore)        //Tallies score
-        {
-            Score = Score + newScore;
-        }
+        { Score = Score + newScore; }
 
         public int SeeScore()       //Shows your score
-        {
-            return Score;
-        }
+        { return Score; }
 
         public bool IsAlive()       //Check if player is alive
-        {
-            return Alive;
-        }
+        { return Alive; }
 
         public void Die()           //Declare player dead
-        {
-            Alive = false;
-        }
+        { Alive = false; }
 
         public void SetLatestOpponent(String name)
-        {
-            latestOpponent = name;
-        }
+        { latestOpponent = name; }
 
         public string GetLatestOpponent()
-        {
-            return latestOpponent;
-        }
+        { return latestOpponent; }
+
+        public void SetActionChoice(String action)
+        { actionChoice = action; }
+
+        public string GetActionChoice()
+        { return actionChoice; }
+
+        public void SetDefenseBonus(int bonus)
+        { defenseBonus = bonus; }
+
+        public int GetDefenseBonus()
+        { return defenseBonus; }
+
+        public void SetRoll(int roll)
+        { diceRoll = roll; }
+
+        public int GetRoll()
+        { return diceRoll; }
 
     }
 }

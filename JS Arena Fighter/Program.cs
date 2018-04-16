@@ -20,7 +20,6 @@ namespace JS_Arena_Fighter
 
             string wantFight;
 
-
             //This is where the main program happens.
 
             Console.WriteLine("Welcome to the Arena, warrior! By what name will you be remembered?");
@@ -64,6 +63,7 @@ namespace JS_Arena_Fighter
 
             //Now we can begin fighting! Yeah!
             Console.WriteLine($"{player.GetName()} enters the arena!");
+            Console.WriteLine();
 
             do
 
@@ -74,8 +74,9 @@ namespace JS_Arena_Fighter
 
 
                 Console.WriteLine($"You currently wield a +{player.GetWeaponStrength()} {player.GetWeaponName()} and wear a +{player.GetArmorStrength()} {player.GetArmorName()}.");
-
+                Console.WriteLine();
                 Console.WriteLine("Do you want to challenge an opponent? Y/N [N]");
+                Console.WriteLine();
 
                 wantFight = Console.ReadKey(true).Key.ToString();
 
@@ -83,7 +84,7 @@ namespace JS_Arena_Fighter
                 {
 
                     Fighter opponent = new Fighter();                       //Create opponent
-                    Console.WriteLine($"You come face to face with {opponent.GetName()}! They look {opponent.GetRating()}! \nThey carry a +{opponent.GetWeaponStrength()} {opponent.GetWeaponName()} and wear a +{opponent.GetArmorStrength()} {opponent.GetArmorName()}. \nDo you want to challenge them?");
+                    Console.WriteLine($"You come face to face with {opponent.GetName()}! They look {opponent.GetRating()}! \n\nThey carry a +{opponent.GetWeaponStrength()} {opponent.GetWeaponName()} and wear a +{opponent.GetArmorStrength()} {opponent.GetArmorName()}. \n\nDo you want to challenge them? Y/N [N]");
 
                     if (Console.ReadKey(true).Key.ToString() == "Y")
                     {
@@ -127,7 +128,7 @@ namespace JS_Arena_Fighter
             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
             Console.WriteLine();
 
-            Console.WriteLine("After a long and bloody career in the arena, you have chosen to retire to spend more time with your remaining limbs.");
+            Console.WriteLine($"After a long and bloody career in the arena, {Lines.retire[Lines.battleDice.Next(Lines.battleOpeners.Length)]}.");
 
             Console.WriteLine($"Goodbye, {player.GetName()}. You achieved {player.SeeScore()} points, and slew {player.SeeVictories()} opponents, including {player.GetLatestOpponent()}. \nYou claim your +{player.GetWeaponStrength()} {player.GetWeaponName()} and your +{player.GetArmorStrength()} {player.GetArmorName()} as keepsakes of your time. Your rating... is unimplemented for now.");
             Console.WriteLine("Thanks for playing!");
