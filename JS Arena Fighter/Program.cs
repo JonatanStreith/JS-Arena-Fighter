@@ -58,6 +58,9 @@ namespace JS_Arena_Fighter
 
             Fighter player = new Fighter(playerName, playerStr, playerDex, playerInt);
 
+            Console.WriteLine($"You arm yourself with a +{player.GetWeaponStrength()} {player.GetWeaponName()} and don a +{player.GetArmorStrength()} {player.GetArmorName()}.");
+
+
             Console.WriteLine("Your destiny awaits.");
             Console.ReadKey();
 
@@ -72,6 +75,10 @@ namespace JS_Arena_Fighter
 
             //Loop for as long as we want to fight.
             {
+
+
+                Console.WriteLine($"You currently wield a +{player.GetWeaponStrength()} {player.GetWeaponName()} and wear a +{player.GetArmorStrength()} {player.GetArmorName()}.");
+
                 Console.WriteLine("Do you want to challenge an opponent? Y/N [N]");
                 keyPressed = Console.ReadKey(true);
 
@@ -81,7 +88,7 @@ namespace JS_Arena_Fighter
                 {
 
                     Fighter opponent = new Fighter();                       //Create opponent
-                    Console.WriteLine($"You come face to face with {opponent.GetName()}! They look {opponent.GetRating()}! Do you want to challenge them?");
+                    Console.WriteLine($"You come face to face with {opponent.GetName()}! They look {opponent.GetRating()}! \nThey carry a +{opponent.GetWeaponStrength()} {opponent.GetWeaponName()} and wear a +{opponent.GetArmorStrength()} {opponent.GetArmorName()}. \nDo you want to challenge them?");
 
                     if (Console.ReadKey(true).Key.ToString() == "Y")
                     {
@@ -127,7 +134,7 @@ namespace JS_Arena_Fighter
 
             Console.WriteLine("After a long and bloody career in the arena, you have chosen to retire to spend more time with your remaining limbs.");
 
-            Console.WriteLine($"You achieved {player.SeeScore()} points, and slew {player.SeeVictories()} opponents, including {player.GetLatestOpponent()}. Your rating... is unimplemented for now.");
+            Console.WriteLine($"Goodbye, {player.GetName()}. You achieved {player.SeeScore()} points, and slew {player.SeeVictories()} opponents, including {player.GetLatestOpponent()}. \nYou claim your +{player.GetWeaponStrength()} {player.GetWeaponName()} and your +{player.GetArmorStrength()} {player.GetArmorName()} as keepsakes of your time. Your rating... is unimplemented for now.");
             Console.WriteLine("Thanks for playing!");
         }
 
@@ -135,7 +142,7 @@ namespace JS_Arena_Fighter
         {
             Console.WriteLine("You have died.");
 
-            Console.WriteLine($"You achieved {player.SeeScore()} points, and slew {player.SeeVictories()} opponents, before falling to the might of {player.GetLatestOpponent()}. Your rating... is unimplemented for now.");
+            Console.WriteLine($"Rest in peace, {player.GetName()}. \nYou achieved {player.SeeScore()} points, and slew {player.SeeVictories()} opponents, before falling to the might of {player.GetLatestOpponent()}. \nYou are buried with your +{player.GetWeaponStrength()} {player.GetWeaponName()} and your +{player.GetArmorStrength()} {player.GetArmorName()}. Your rating... is unimplemented for now.");
 
             //Do death stuff
         }

@@ -18,6 +18,7 @@ namespace JS_Arena_Fighter
             int whoHits;         //If positive, player hits; if negative, opponent hits; 0: stalemate
             int damageDealt;
 
+
             Random battleDice = new Random();
 
 
@@ -81,6 +82,14 @@ namespace JS_Arena_Fighter
                 Console.WriteLine($"Victory! You {Lines.finisher[battleDice.Next(Lines.finisher.Length)]} and finish the battle by {Lines.pose[battleDice.Next(Lines.pose.Length)]}! Huzzah!");
                 player.AddVictory();
                 player.AddScore(opponent.GetScoreRating());
+                Console.ReadLine();
+                Console.WriteLine();
+                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                Console.WriteLine();
+
+                LootEquipment(player, opponent);  //Initiates looting function. Yes, you may take their stuff even if it's weaker than your own. Self-imposed challenge, perhaps?
+
+
             }
             else
             {
@@ -88,6 +97,33 @@ namespace JS_Arena_Fighter
             }
             Console.ReadKey();
             Console.Clear();
+        }
+
+        static void LootEquipment(Fighter winner, Fighter loser)
+        {
+            Console.WriteLine($"They had a +{loser.GetWeaponStrength()} {loser.GetWeaponName()} (compared to your +{winner.GetWeaponStrength()} {winner.GetWeaponName()})");
+            Console.WriteLine($"and a +{loser.GetArmorStrength()} {loser.GetArmorName()} (compared to your +{winner.GetArmorStrength()} {winner.GetArmorName()}).");
+            Console.WriteLine("You may claim one item as spoils of victory. What's your choice? W/A/N [N]");
+
+            string lootChoice = Console.ReadKey(true).Key.ToString();
+
+            if (lootChoice == "W")
+            {
+                Console.WriteLine($"You claim their +{loser.GetWeaponStrength()} {loser.GetWeaponName()}, discarding your old {winner.GetWeaponName()}." );
+                winner.SetWeaponName(loser.GetWeaponName());
+                winner.SetWeaponStrength(loser.GetWeaponStrength());
+            }
+            else if (lootChoice == "A")
+            {
+                Console.WriteLine($"You claim their +{loser.GetArmorStrength()} {loser.GetArmorName()}, discarding your old {winner.GetArmorName()}.");
+                winner.SetArmorName(loser.GetArmorName());
+                winner.SetArmorStrength(loser.GetArmorStrength());
+
+            }
+            else
+            {
+                Console.WriteLine("You leave their equipment alone.");
+            }
         }
 
     }

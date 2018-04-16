@@ -17,6 +17,15 @@ namespace JS_Arena_Fighter
         private bool Alive;
         private string latestOpponent = "nobody";
 
+        private string weaponName;
+        private int weaponStrength;
+
+        private string armorName;
+        private int armorStrength;
+
+        private int maxPower;       //How powerful equipment they may have, at most
+
+
         Random soRandom = new Random();
 
         public Fighter(string fName, int fStr, int fDex, int fInt)
@@ -28,6 +37,13 @@ namespace JS_Arena_Fighter
             Victories = 0;
             Score = 0;
             Alive = true;
+
+            weaponName = Lines.weaponType[soRandom.Next(Lines.weaponType.Length)];
+            weaponStrength = 0;
+
+            armorName = Lines.armorType[soRandom.Next(Lines.armorType.Length)];
+            armorStrength = 0;
+
         }
 
         public Fighter()
@@ -37,6 +53,13 @@ namespace JS_Arena_Fighter
             Dex = soRandom.Next(3, 10);
             Int = soRandom.Next(3, 10);
 
+            maxPower = (((Str + Dex + Int) / 3)-2);
+
+            weaponName = Lines.weaponType[soRandom.Next(Lines.weaponType.Length)];
+            weaponStrength = soRandom.Next(maxPower);
+
+            armorName = Lines.armorType[soRandom.Next(Lines.armorType.Length)];
+            armorStrength = soRandom.Next(maxPower);
 
         }
 
@@ -78,13 +101,55 @@ namespace JS_Arena_Fighter
 
         public int GetOffense()
         {
-            return Str + Int;
+            return Str + Int + weaponStrength;
         }
 
         public int GetDefense()
         {
-            return Dex + Int;
+            return Dex + Int + armorStrength;
         }
+
+
+
+
+        public string GetWeaponName()
+        {
+            return weaponName;
+        }
+        public int GetWeaponStrength()
+        {
+            return weaponStrength;
+        }
+
+
+        public string GetArmorName()
+        {
+            return armorName;
+        }
+        public int GetArmorStrength()
+        {
+            return armorStrength;
+        }
+
+
+        public void SetWeaponName(string newName)
+        {
+            weaponName = newName;
+        }
+        public void SetWeaponStrength(int newStrength)
+        {
+            weaponStrength = newStrength;
+        }
+
+        public void SetArmorName(string newName)
+        {
+            armorName = newName;
+        }
+        public void SetArmorStrength(int newStrength)
+        {
+            armorStrength = newStrength;
+        }
+
 
 
         public void AddVictory()        //Tallies another victory
