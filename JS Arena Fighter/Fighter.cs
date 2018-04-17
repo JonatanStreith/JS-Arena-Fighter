@@ -26,8 +26,8 @@ namespace JS_Arena_Fighter
         private string armorName;
         private int armorStrength;
 
-        private int maxPower;       //How powerful equipment they may have, at most
-        private int defenseBonus;    //You get a bonus to your attack if you defended last turn
+        private int maxPower;                       //How powerful equipment they may have, at most
+        private int defenseBonus;                   //You get a bonus to your attack if you defended last turn
 
 
 
@@ -105,25 +105,30 @@ namespace JS_Arena_Fighter
 
         public string GetWeaponName()
         { return weaponName; }
+
         public int GetWeaponStrength()
         { return weaponStrength; }
 
 
         public string GetArmorName()
         { return armorName; }
+
         public int GetArmorStrength()
         { return armorStrength; }
 
+
         public void SetWeaponName(string newName)
         { weaponName = newName; }
+
         public void SetWeaponStrength(int newStrength)
         { weaponStrength = newStrength; }
 
+
         public void SetArmorName(string newName)
         { armorName = newName; }
+
         public void SetArmorStrength(int newStrength)
         { armorStrength = newStrength; }
-
 
 
         public void AddVictory()        //Tallies another victory
@@ -132,11 +137,13 @@ namespace JS_Arena_Fighter
         public int SeeVictories()       //Shows how many victories you've had
         { return Victories; }
 
+
         public void AddScore(int newScore)        //Tallies score
         { Score = Score + newScore; }
 
         public int SeeScore()       //Shows your score
         { return Score; }
+
 
         public bool IsAlive()       //Check if player is alive
         { return Alive; }
@@ -144,11 +151,13 @@ namespace JS_Arena_Fighter
         public void Die()           //Declare player dead
         { Alive = false; }
 
+
         public void SetLatestOpponent(String name)
         { latestOpponent = name; }
 
         public string GetLatestOpponent()
         { return latestOpponent; }
+
 
         public void SetActionChoice(String action)
         { actionChoice = action; }
@@ -156,17 +165,18 @@ namespace JS_Arena_Fighter
         public string GetActionChoice()
         { return actionChoice; }
 
+
         public void SetDefenseBonus(int bonus)
         { defenseBonus = bonus; }
 
         public int GetDefenseBonus()
         { return defenseBonus; }
 
+
         public void SetRoll(int roll)
         { diceRoll = roll; }
 
         public int GetRoll()
         { return diceRoll; }
-
     }
 }
